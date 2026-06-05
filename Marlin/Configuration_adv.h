@@ -3843,6 +3843,7 @@
       #define SPEED_POWER_MIN             0    // (%) 0-100
       #define SPEED_POWER_MAX           100    // (%) 0-100
       #define SPEED_POWER_STARTUP        80    // (%) M3/M4 speed/power default (with no arguments)
+      // #define SPEED_POWER_STARTUP        0    // (%) M3/M4 speed/power default (with no arguments)
     #endif
 
     // Define the minimum and maximum test pulse time values for a laser test fire function
@@ -4028,7 +4029,7 @@
  * Enables G53 and G54-G59.3 commands to select coordinate systems
  * and G92.1 to reset the workspace to native machine space.
  */
-//#define CNC_COORDINATE_SYSTEMS
+#define CNC_COORDINATE_SYSTEMS
 
 // @section security
 
@@ -4200,21 +4201,21 @@
 // @section custom main menu
 
 // Custom Menu: Main Menu
-//#define CUSTOM_MENU_MAIN
+#define CUSTOM_MENU_MAIN
 #if ENABLED(CUSTOM_MENU_MAIN)
-  //#define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
+  #define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
   #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 User Script Done"
   #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
   //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
   #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Home & UBL Info"
-  #define MAIN_MENU_ITEM_1_GCODE "G28\nG29 W"
+  // #define MAIN_MENU_ITEM_1_DESC "Home & UBL Info"
+  // #define MAIN_MENU_ITEM_1_GCODE "G28\nG29 W"
   //#define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
   //#define MAIN_MENU_ITEM_1_IMMEDIATE        // Skip the queue and execute immediately. Rarely needed.
 
-  #define MAIN_MENU_ITEM_2_DESC "Preheat for " PREHEAT_1_LABEL
-  #define MAIN_MENU_ITEM_2_GCODE "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
+  // #define MAIN_MENU_ITEM_2_DESC "Preheat for " PREHEAT_1_LABEL
+  // #define MAIN_MENU_ITEM_2_GCODE "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
   //#define MAIN_MENU_ITEM_2_CONFIRM
   //#define MAIN_MENU_ITEM_2_IMMEDIATE
 
@@ -4228,10 +4229,20 @@
   //#define MAIN_MENU_ITEM_4_CONFIRM
   //#define MAIN_MENU_ITEM_4_IMMEDIATE
 
-  //#define MAIN_MENU_ITEM_5_DESC "Home & Info"
-  //#define MAIN_MENU_ITEM_5_GCODE "G28\nM503"
-  //#define MAIN_MENU_ITEM_5_CONFIRM
+  // #define MAIN_MENU_ITEM_5_DESC "Home & Info"
+  // #define MAIN_MENU_ITEM_5_GCODE "G28\nM503"
+  // #define MAIN_MENU_ITEM_5_CONFIRM
   //#define MAIN_MENU_ITEM_5_IMMEDIATE
+
+  #define MAIN_MENU_ITEM_6_DESC "Go to origin"
+  #define MAIN_MENU_ITEM_6_GCODE "G1 Z10 F3000\nG1 X0 Y0\nG1 Z0"
+  #define MAIN_MENU_ITEM_6_CONFIRM
+  // #define MAIN_MENU_ITEM_5_IMMEDIATE
+
+  #define MAIN_MENU_ITEM_7_DESC "Set tool origin"
+  #define MAIN_MENU_ITEM_7_GCODE "G92 X0 Y0 Z0"
+  //#define MAIN_MENU_ITEM_6_CONFIRM
+  //#define MAIN_MENU_ITEM_6_IMMEDIATE
 #endif
 
 // @section custom config menu
